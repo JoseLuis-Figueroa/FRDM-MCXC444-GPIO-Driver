@@ -1,0 +1,22 @@
+15:26:01 **** Incremental Build of configuration Debug for project MCXC444_Project ****
+make -r -j12 all 
+Building file: ../source/MCXC444_Project.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DCPU_MCXC444VLH -DCPU_MCXC444VLH_cm0plus -DSDK_DEBUGCONSOLE=1 -DCR_INTEGER_PRINTF -DPRINTF_FLOAT_ENABLE=0 -D__MCUXPRESSO -D__USE_CMSIS -DDEBUG -I"C:\Users\josefi\Documents\MCUXpressoIDE_25.6.136\Boards\FRDM-MCXC444\RepoProjects\FRDM-MCXC444-GPIO-Driver\Firmware-Code\MCXC444_Project\source" -I"C:\Users\josefi\Documents\MCUXpressoIDE_25.6.136\Boards\FRDM-MCXC444\RepoProjects\FRDM-MCXC444-GPIO-Driver\Firmware-Code\MCXC444_Project\CMSIS" -I"C:\Users\josefi\Documents\MCUXpressoIDE_25.6.136\Boards\FRDM-MCXC444\RepoProjects\FRDM-MCXC444-GPIO-Driver\Firmware-Code\MCXC444_Project\CMSIS\m-profile" -I"C:\Users\josefi\Documents\MCUXpressoIDE_25.6.136\Boards\FRDM-MCXC444\RepoProjects\FRDM-MCXC444-GPIO-Driver\Firmware-Code\MCXC444_Project\device" -I"C:\Users\josefi\Documents\MCUXpressoIDE_25.6.136\Boards\FRDM-MCXC444\RepoProjects\FRDM-MCXC444-GPIO-Driver\Firmware-Code\MCXC444_Project\device\periph2" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -ffunction-sections -fdata-sections -fno-builtin -fmerge-constants -fmacro-prefix-map="../source/"= -mcpu=cortex-m0plus -mthumb -D__REDLIB__ -fstack-usage -specs=redlib.specs -MMD -MP -MF"source/MCXC444_Project.d" -MT"source/MCXC444_Project.o" -MT"source/MCXC444_Project.d" -o "source/MCXC444_Project.o" "../source/MCXC444_Project.c"
+Finished building: ../source/MCXC444_Project.c
+ 
+Building target: MCXC444_Project.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="MCXC444_Project.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -Xlinker --cref -mcpu=cortex-m0plus -mthumb -T MCXC444_Project_Debug.ld -o "MCXC444_Project.axf" ./source/MCXC444_Project.o ./source/mtb.o ./source/semihost_hardfault.o  ./device/system_MCXC444.o   
+C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/bin/ld.exe: Linker Flash Config Support Enabled, but no .FlashConfig section provided within application
+C:/nxp/MCUXpressoIDE_25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.win32_25.6.0.202501151204/tools/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/bin/ld.exe: warning: cannot find entry symbol ResetISR; defaulting to 00000000
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:          1 KB       256 KB      0.39%
+            SRAM:        4224 B        32 KB     12.89%
+collect2.exe: error: ld returned 1 exit status
+make[1]: *** [makefile:45: MCXC444_Project.axf] Error 1
+make: *** [makefile:36: all] Error 2
+"make -r -j12 all" terminated with exit code 2. Build might be incomplete.
+
+15:26:02 Build Failed. 3 errors, 1 warnings. (took 735ms)
+

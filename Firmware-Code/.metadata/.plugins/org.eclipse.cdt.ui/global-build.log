@@ -1,0 +1,8 @@
+15:41:45 **** Incremental Build of configuration Debug for project GPIO-Driver ****
+make -r -j12 all 
+make[1]: Nothing to be done for 'main-build'.
+Performing post-build steps
+arm-none-eabi-size "GPIO-Driver.axf"; # arm-none-eabi-objcopy -v -O binary "GPIO-Driver.axf" "GPIO-Driver.bin" ; # checksum -p MCXC444 -d "GPIO-Driver.bin";
+   text	   data	    bss	    dec	    hex	filename
+   2568	      0	   4408	   6976	   1b40	GPIO-Driver.axf
+ 

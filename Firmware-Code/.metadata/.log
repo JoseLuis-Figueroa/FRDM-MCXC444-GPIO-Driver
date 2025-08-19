@@ -1,0 +1,28 @@
+!SESSION 2025-08-19 15:20:58.130 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.9
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.nxp.mcuxpresso.core.datamodels 1 0 2025-08-19 15:21:53.071
+!MESSAGE Recreating part support. No part support available.
+
+!ENTRY org.eclipse.egit.ui 2 0 2025-08-19 15:21:56.591
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\josefi'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY com.nxp.mcuxpresso.core.datamodels 1 0 2025-08-19 15:21:56.842
+!MESSAGE The device 'MCXC444' (version='1.0.0') from SDK 'SDK_2.x_FRDM-MCXC444' (version='25.06.00', build='epluginsite814 2025-06-27') will be installed.
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-08-19 15:23:24.232
+!MESSAGE Indexed 'MCXC444_Project' (4 sources, 54 headers) in 1.19 sec: 1,285 declarations; 2,560 references; 4 unresolved inclusions; 7 syntax errors; 28 unresolved names (0.72%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-08-19 15:29:34.480
+!MESSAGE Indexed 'MCXC444_Project2' (5 sources, 54 headers) in 0.427 sec: 1,544 declarations; 2,791 references; 4 unresolved inclusions; 7 syntax errors; 28 unresolved names (0.64%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-08-19 15:32:04.872
+!MESSAGE Indexed 'GPIO-Driver' (5 sources, 54 headers) in 0.36 sec: 1,544 declarations; 2,791 references; 4 unresolved inclusions; 7 syntax errors; 28 unresolved names (0.64%)

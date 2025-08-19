@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;GPIO-Driver/source/GPIO-Driver.c&apos; to &apos;main.c&apos;" description="Rename resource &apos;GPIO-Driver.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="source/GPIO-Driver.c" name="main.c" stamp="1755639150289" updateReferences="true"/>
+</session>
