@@ -1,0 +1,43 @@
+15:29:51 **** Build of configuration Debug for project MCXC444_Project2 ****
+make -r -j12 all 
+Building file: ../startup/startup_mcxc444.c
+Building file: ../source/MCXC444_Project2.c
+Building file: ../source/mtb.c
+Building file: ../source/semihost_hardfault.c
+Building file: ../device/system_MCXC444.c
+Invoking: MCU C Compiler
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DCPU_MCXC444VLH -DCPU_MCXC444VLH_cm0plus -DSDK_DEBUGCONSOLE=1 -DCR_INTEGER_PRINTF -DPRINTF_FLOAT_ENABLE=0 -D__MCUXPRESSO -D__USE_CMSIS -DDEBUG -I"C:\Users\josefi\Documents\MCUXpressoIDE_25.6.136\Boards\FRDM-MCXC444\RepoProjects\FRDM-MCXC444-GPIO-Driver\Firmware-Code\MCXC444_Project2\source" -I"C:\Users\josefi\Documents\MCUXpressoIDE_25.6.136\Boards\FRDM-MCXC444\RepoProjects\FRDM-MCXC444-GPIO-Driver\Firmware-Code\MCXC444_Project2\CMSIS" -I"C:\Users\josefi\Documents\MCUXpressoIDE_25.6.136\Boards\FRDM-MCXC444\RepoProjects\FRDM-MCXC444-GPIO-Driver\Firmware-Code\MCXC444_Project2\CMSIS\m-profile" -I"C:\Users\josefi\Documents\MCUXpressoIDE_25.6.136\Boards\FRDM-MCXC444\RepoProjects\FRDM-MCXC444-GPIO-Driver\Firmware-Code\MCXC444_Project2\device" -I"C:\Users\josefi\Documents\MCUXpressoIDE_25.6.136\Boards\FRDM-MCXC444\RepoProjects\FRDM-MCXC444-GPIO-Driver\Firmware-Code\MCXC444_Project2\device\periph2" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -ffunction-sections -fdata-sections -fno-builtin -fmerge-constants -fmacro-prefix-map="../startup/"= -mcpu=cortex-m0plus -mthumb -D__REDLIB__ -fstack-usage -specs=redlib.specs -MMD -MP -MF"startup/startup_mcxc444.d" -MT"startup/startup_mcxc444.o" -MT"startup/startup_mcxc444.d" -o "startup/startup_mcxc444.o" "../startup/startup_mcxc444.c"
+arm-none-eabi-gcc -D__REDLIB__ -DCPU_MCXC444VLH -DCPU_MCXC444VLH_cm0plus -DSDK_DEBUGCONSOLE=1 -DCR_INTEGER_PRINTF -DPRINTF_FLOAT_ENABLE=0 -D__MCUXPRESSO -D__USE_CMSIS -DDEBUG -I"C:\Users\josefi\Documents\MCUXpressoIDE_25.6.136\Boards\FRDM-MCXC444\RepoProjects\FRDM-MCXC444-GPIO-Driver\Firmware-Code\MCXC444_Project2\source" -I"C:\Users\josefi\Documents\MCUXpressoIDE_25.6.136\Boards\FRDM-MCXC444\RepoProjects\FRDM-MCXC444-GPIO-Driver\Firmware-Code\MCXC444_Project2\CMSIS" -I"C:\Users\josefi\Documents\MCUXpressoIDE_25.6.136\Boards\FRDM-MCXC444\RepoProjects\FRDM-MCXC444-GPIO-Driver\Firmware-Code\MCXC444_Project2\CMSIS\m-profile" -I"C:\Users\josefi\Documents\MCUXpressoIDE_25.6.136\Boards\FRDM-MCXC444\RepoProjects\FRDM-MCXC444-GPIO-Driver\Firmware-Code\MCXC444_Project2\device" -I"C:\Users\josefi\Documents\MCUXpressoIDE_25.6.136\Boards\FRDM-MCXC444\RepoProjects\FRDM-MCXC444-GPIO-Driver\Firmware-Code\MCXC444_Project2\device\periph2" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -ffunction-sections -fdata-sections -fno-builtin Invoking: MCU C Compiler
+Invoking: MCU C Compiler
+-fmerge-constants -fmacro-prefix-map="../source/"= -mcpu=cortex-m0plus -mthumb -D__REDLIB__ -fstack-usage -specs=redlib.specs -MMD -MP -MF"source/MCXC444_Project2.d" -MT"source/MCXC444_Project2.o" -MT"source/MCXC444_Project2.d" -o "source/MCXC444_Project2.o" "../source/MCXC444_Project2.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DCPU_MCXC444VLH -DCPU_MCXC444VLH_cm0plus -DSDK_DEBUGCONSOLE=1 -DCR_INTEGER_PRINTF -DPRINTF_FLOAT_ENABLE=0 -D__MCUXPRESSO -D__USE_CMSIS -DDEBUG -I"C:\Users\josefi\Documents\MCUXpressoIDE_25.6.136\Boards\FRDM-MCXC444\RepoProjects\FRDM-MCXC444-GPIO-Driver\Firmware-Code\MCXC444_Project2\source" -I"C:\Users\josefi\Documents\MCUXpressoIDE_25.6.136\Boards\FRDM-MCXC444\RepoProjects\FRDM-MCXC444-GPIO-Driver\Firmware-Code\MCXC444_Project2\CMSIS" -I"C:\Users\josefi\Documents\MCUXpressoIDE_25.6.136\Boards\FRDM-MCXC444\RepoProjects\FRDM-MCXC444-GPIO-Driver\Firmware-Code\MCXC444_Project2\CMSIS\m-profile" -I"C:\Users\josefi\Documents\MCUXpressoIDE_25.6.136\Boards\FRDM-MCXC444\RepoProjects\FRDM-MCXC444-GPIO-Driver\Firmware-Code\MCXC444_Project2\device" -I"C:\Users\josefi\Documents\MCUXpressoIDE_25.6.136\Boards\FRDM-MCXC444\RepoProjects\FRDM-MCXC444-GPIO-Driver\Firmware-Code\MCXC444_Project2\device\periph2" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -ffunction-sections -fdata-sections -fno-builtin -fmerge-constants -fmacro-prefix-map="../source/"= -mcpu=cortex-m0plus -mthumb -D__REDLIB__ -fstack-usage -specs=redlib.specs -MMD -MP -MF"source/mtb.d" -MT"source/mtb.o" -MT"source/mtb.d" -o "source/mtb.o" "../source/mtb.c"
+arm-none-eabi-gcc -D__REDLIB__ -DCPU_MCXC444VLH -DCPU_MCXC444VLH_cm0plus -DSDK_DEBUGCONSOLE=1 -DCR_INTEGER_PRINTF -DPRINTF_FLOAT_ENABLE=0 -D__MCUXPRESSO -D__USE_CMSIS -DDEBUG -I"C:\Users\josefi\Documents\MCUXpressoIDE_25.6.136\Boards\FRDM-MCXC444\RepoProjects\FRDM-MCXC444-GPIO-Driver\Firmware-Code\MCXC444_Project2\source" -I"C:\Users\josefi\Documents\MCUXpressoIDE_25.6.136\Boards\FRDM-MCXC444\RepoProjects\FRDM-MCXC444-GPIO-Driver\Firmware-Code\MCXC444_Project2\CMSIS" -I"C:\Users\josefi\Documents\MCUXpressoIDE_25.6.136\Boards\FRDM-MCXC444\RepoProjects\FRDM-MCXC444-GPIO-Driver\Firmware-Code\MCXC444_Project2\CMSIS\m-profile" -I"C:\Users\josefi\Documents\MCUXpressoIDE_25.6.136\Boards\FRDM-MCXC444\RepoProjects\FRDM-MCXC444-GPIO-Driver\Firmware-Code\MCXC444_Project2\device" -I"C:\Users\josefi\Documents\MCUXpressoIDE_25.6.136\Boards\FRDM-MCXC444\RepoProjects\FRDM-MCXC444-GPIO-Driver\Firmware-Code\MCXC444_Project2\device\periph2" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -ffunction-sections -fdata-sections -fno-builtin -fmerge-constants -fmacro-prefix-map="../source/"= -mcpu=cortex-m0plus -mthumb -D__REDLIB__ -fstack-usage -specs=redlib.specs -MMD -MP -MF"source/semihost_hardfault.d" -MT"source/semihost_hardfault.o" -MT"source/semihost_hardfault.d" -o "source/semihost_hardfault.o" "../source/semihost_hardfault.c"
+arm-none-eabi-gcc -D__REDLIB__ -DCPU_MCXC444VLH -DCPU_MCXC444VLH_cm0plus -DSDK_DEBUGCONSOLE=1 -DCR_INTEGER_PRINTF -DPRINTF_FLOAT_ENABLE=0 -D__MCUXPRESSO -D__USE_CMSIS -DDEBUG -I"C:\Users\josefi\Documents\MCUXpressoIDE_25.6.136\Boards\FRDM-MCXC444\RepoProjects\FRDM-MCXC444-GPIO-Driver\Firmware-Code\MCXC444_Project2\source" -I"C:\Users\josefi\Documents\MCUXpressoIDE_25.6.136\Boards\FRDM-MCXC444\RepoProjects\FRDM-MCXC444-GPIO-Driver\Firmware-Code\MCXC444_Project2\CMSIS" -I"C:\Users\josefi\Documents\MCUXpressoIDE_25.6.136\Boards\FRDM-MCXC444\RepoProjects\FRDM-MCXC444-GPIO-Driver\Firmware-Code\MCXC444_Project2\CMSIS\m-profile" -I"C:\Users\josefi\Documents\MCUXpressoIDE_25.6.136\Boards\FRDM-MCXC444\RepoProjects\FRDM-MCXC444-GPIO-Driver\Firmware-Code\MCXC444_Project2\device" -I"C:\Users\josefi\Documents\MCUXpressoIDE_25.6.136\Boards\FRDM-MCXC444\RepoProjects\FRDM-MCXC444-GPIO-Driver\Firmware-Code\MCXC444_Project2\device\periph2" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -ffunction-sections -fdata-sections -fno-builtin -fmerge-constants -fmacro-prefix-map="../device/"= -mcpu=cortex-m0plus -mthumb -D__REDLIB__ -fstack-usage -specs=redlib.specs -MMD -MP -MF"device/system_MCXC444.d" -MT"device/system_MCXC444.o" -MT"device/system_MCXC444.d" -o "device/system_MCXC444.o" "../device/system_MCXC444.c"
+Finished building: ../source/MCXC444_Project2.c
+Finished building: ../startup/startup_mcxc444.c
+Finished building: ../source/semihost_hardfault.c
+ 
+Finished building: ../source/mtb.c
+ 
+ 
+ 
+Finished building: ../device/system_MCXC444.c
+ 
+Building target: MCXC444_Project2.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="MCXC444_Project2.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -Xlinker --cref -mcpu=cortex-m0plus -mthumb -T MCXC444_Project2_Debug.ld -o "MCXC444_Project2.axf" ./startup/startup_mcxc444.o  ./source/MCXC444_Project2.o ./source/mtb.o ./source/semihost_hardfault.o  ./device/system_MCXC444.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:        2568 B       256 KB      0.98%
+            SRAM:        4408 B        32 KB     13.45%
+Finished building target: MCXC444_Project2.axf
+ 
+Performing post-build steps
+arm-none-eabi-size "MCXC444_Project2.axf"; # arm-none-eabi-objcopy -v -O binary "MCXC444_Project2.axf" "MCXC444_Project2.bin" ; # checksum -p MCXC444 -d "MCXC444_Project2.bin";
+   text	   data	    bss	    dec	    hex	filename
+   2568	      0	   4408	   6976	   1b40	MCXC444_Project2.axf
+ 
+
+15:29:52 Build Finished. 0 errors, 0 warnings. (took 1s.187ms)
+
