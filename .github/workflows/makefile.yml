@@ -1,0 +1,32 @@
+name: Makefile CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install ARM GCC Toolchain
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y gcc-arm-none-eabi binutils-arm-none-eabi
+    - name: Build firmware using Makefile
+      run: make -C Firmware-Code/GPIO-Driver/Debug all
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: firmware
+        path: |
+          Firmware-Code/GPIO-Driver/Debug/GPIO-Driver.axf
+          Firmware-Code/GPIO-Driver/Debug/GPIO-Driver.map
+          Debug/**/*.o
