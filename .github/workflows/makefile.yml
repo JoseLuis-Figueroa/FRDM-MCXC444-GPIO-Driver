@@ -21,13 +21,13 @@ jobs:
         sudo apt-get install -y gcc-arm-none-eabi binutils-arm-none-eabi
 
     - name: Build firmware using Makefile
-      run: make -C Debug all
+      run: make -C Firmware-Code/GPIO-Driver/Debug all
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
       with:
         name: firmware
         path: |
-          Debug/GPIO-Driver.axf
-          Debug/GPIO-Driver.map
+          Firmware-Code/GPIO-Driver/Debug/GPIO-Driver.axf
+          Firmware-Code/GPIO-Driver/Debug/GPIO-Driver.map
           Debug/**/*.o
