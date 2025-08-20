@@ -1,2 +1,11 @@
-/Debug/*
+# Ignore everything in Debug
+Debug/*
+
+# Allow the folder itself
+!Debug/
+
+# Allow specific files
 !Debug/Makefile
+!Debug/GPIO-Driver_Debug_library.ld
+!Debug/GPIO-Driver_Debug_memory.ld
+!Debug/GPIO-Driver_Debug.ld
