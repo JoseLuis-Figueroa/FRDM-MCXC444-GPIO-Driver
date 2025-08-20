@@ -1,2 +1,5 @@
 /Debug/*
 !Debug/Makefile
+!/Debug/GPIO_Driver_Debug_library.ld
+!/Debug/GPIO_Driver_Debug_memory.ld
+!Debug/GPIO_Driver_Debug.ld
