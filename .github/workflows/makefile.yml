@@ -1,4 +1,4 @@
-name: Makefile CI
+name: Build GPIO Driver
 
 on:
   push:
@@ -8,25 +8,34 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
+    - name: Checkout repository
       uses: actions/checkout@v4
 
     - name: Install ARM GCC Toolchain
       run: |
         sudo apt-get update
-        sudo apt-get install -y gcc-arm-none-eabi binutils-arm-none-eabi
-    - name: Build firmware using Makefile
-      run: make -C Firmware-Code/GPIO-Driver/Debug all
+        sudo apt-get install -y gcc-arm-none-eabi binutils-arm-none-eabi libnewlib-arm-none-eabi make
+
+    - name: Display ARM GCC version
+      run: arm-none-eabi-gcc --version
+
+    - name: Build GPIO Driver
+      working-directory: Firmware-Code/GPIO-Driver/Debug
+      run: |
+        echo "Building GPIO Driver..."
+        make all
+
+    - name: List build artifacts
+      working-directory: Firmware-Code/GPIO-Driver/Debug
+      run: ls -l
 
     - name: Upload build artifacts
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v3
       with:
-        name: firmware
-        path: |
-          Firmware-Code/GPIO-Driver/Debug/GPIO-Driver.axf
-          Firmware-Code/GPIO-Driver/Debug/GPIO-Driver.map
-          Debug/**/*.o
+        name: GPIO-Driver-Artifacts
+        path: Firmware-Code/GPIO-Driver/Debug/*.axf
+              Firmware-Code/GPIO-Driver/Debug/GPIO-Driver.map
+              Debug/**/*.o
