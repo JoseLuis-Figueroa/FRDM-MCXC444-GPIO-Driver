@@ -18,8 +18,8 @@
 int main(void)
 {
     /* Enable clock access to GPIOD and GPIOC*/
-    SIM->SCGC5 |= SIM_SCGC5_PORTD;
-    SIM->SCGC5 |= SIM_SCGC5_PORTE;
+    SIM->SCGC5 |= SIM_SCGC5_PORTD(1);
+    SIM->SCGC5 |= SIM_SCGC5_PORTE(1);
 
 
     return 0 ;

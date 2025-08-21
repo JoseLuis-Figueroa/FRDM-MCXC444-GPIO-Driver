@@ -23,10 +23,23 @@
 /*****************************************************************************
 * Preprocessor Constants
 *****************************************************************************/
+/**
+ * Defines the number of ports on the processor.
+ */
+#define NUMBER_OF_PORTS 5U
 
 /*****************************************************************************
 * Typedefs
 *****************************************************************************/
+/**
+ * Defines the possible states for a digital output pin.
+*/
+typedef enum
+{
+    GPIO_LOW,            /**< Defines digital state ground*/
+    GPIO_HIGH,           /**< Defines digital state power*/
+    GPIO_PIN_STATE_MAX   /**< Defines the maximum digital state*/
+}GPIO_PinState_t;
 
 /*****************************************************************************
 * Function Prototypes
