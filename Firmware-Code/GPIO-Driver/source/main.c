@@ -1,24 +1,25 @@
-/*
- * Copyright 2016-2025 NXP
- * All rights reserved.
- *
- * SPDX-License-Identifier: BSD-3-Clause
- */
-
 /**
- * @file    GPIO-Driver.c
- * @brief   Application entry point.
+ * @file main.c
+ * @author Jose Luis Figueroa
+ * @brief Implement the GPIO driver. 
+ * @version 0.0
+ * @date 2025-21-08
+ * @note 
+ * 
+ * @copyright Copyright (c) 2025 Jose Luis Figueroa. MIT License.
+ * 
  */
+/*****************************************************************************
+* Includes
+*****************************************************************************/
 #include <stdio.h>
-/* TODO: insert other include files here. */
+#include "MCXC444.h"
 
-/* TODO: insert other definitions and declarations here. */
-
-/*
- * @brief   Application entry point.
- */
 int main(void)
 {
+    /* Enable clock access to GPIOD and GPIOC*/
+    SIM->SCGC5 |= SIM_SCGC5_PORTD;
+    SIM->SCGC5 |= SIM_SCGC5_PORTE;
 
 
     return 0 ;
