@@ -142,8 +142,20 @@ typedef enum
     GPIO_MAX_SPEED    /**< Defines the maximum slew rate */
 }GPIO_SlewRate_t;
 
+/**
+ * Defines the possible states of the internal resistor.
+ */
+typedef enum
+{
+    GPIO_NO_RESISTOR,    /**< Used to disable the internal resistor */
+    GPIO_PULLUP,         /**< Used to enable the internal pull-up resistor */
+    GPIO_PULLDOWN,       /**< Used to enable the internal pull-down resistor*/
+    GPIO_MAX_RESISTOR    /**< Defines the maximum resistor value */
+}GPIO_Resistor_t;
+
 /*****************************************************************************
 * Function Prototypes
 *****************************************************************************/
+
 
 #endif /* GPIO_CFG_H */
