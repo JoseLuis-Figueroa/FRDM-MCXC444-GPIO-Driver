@@ -132,6 +132,16 @@ typedef enum
     GPIO_MAX_FUNCTION/**< Defines the maximum function value */
 }GPIO_Function_t;
 
+/**
+ * Defines the slew rate settings available.
+ */
+typedef enum
+{
+    GPIO_FAST_SLEW,   /**< Fast slew rate is configured on the pin */
+    GPIO_SLOW_SLEW,   /**< Slow slew rate is configured on the pin */
+    GPIO_MAX_SPEED    /**< Defines the maximum slew rate */
+}GPIO_SlewRate_t;
+
 /*****************************************************************************
 * Function Prototypes
 *****************************************************************************/
