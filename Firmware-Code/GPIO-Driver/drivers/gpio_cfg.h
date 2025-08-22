@@ -169,6 +169,15 @@ typedef struct
 /*****************************************************************************
 * Function Prototypes
 *****************************************************************************/
+#ifdef __cplusplus
+extern "C" {
+#endif
 
+const GPIO_Config_t * const GPIO_GetConfigTable(void);
+size_t GPIO_GetConfigTableSize(void);
+
+#ifdef __cplusplus
+} // extern "C"
+#endif
 
 #endif /* GPIO_CFG_H */
