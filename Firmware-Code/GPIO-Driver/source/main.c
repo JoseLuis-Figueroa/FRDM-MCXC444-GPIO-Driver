@@ -13,6 +13,7 @@
 * Includes
 *****************************************************************************/
 #include <stdio.h>
+#include "gpio_cfg.h"
 #include "MCXC444.h"
 
 int main(void)
