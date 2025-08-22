@@ -115,6 +115,22 @@ typedef enum
     GPIO_MAX_PIN = 32 /**< Defines the maximum pin value*/
 }GPIO_Pin_t;
 
+/**
+ * Defines the GPIO alternate function. A multiplexer selects the mode 
+ * to be configured on the pin.
+ */
+typedef enum
+{
+    GPIO_AF0,        /**< Alternate function 0: pin disabled/analog */
+    GPIO_AF1,        /**< Alternate function 1: GPIO */
+    GPIO_AF2,        /**< Alternate function 2: chip-specific */
+    GPIO_AF3,        /**< Alternate function 3: chip-specific */
+    GPIO_AF4,        /**< Alternate function 4: chip-specific */
+    GPIO_AF5,        /**< Alternate function 5: chip-specific */
+    GPIO_AF6,        /**< Alternate function 6: chip-specific */
+    GPIO_AF7,        /**< Alternate function 7: chip-specific */
+    GPIO_MAX_FUNCTION/**< Defines the maximum function value */
+}GPIO_Function_t;
 
 /*****************************************************************************
 * Function Prototypes
