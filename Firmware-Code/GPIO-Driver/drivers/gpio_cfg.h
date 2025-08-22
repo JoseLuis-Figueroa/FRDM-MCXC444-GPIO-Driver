@@ -153,6 +153,19 @@ typedef enum
     GPIO_MAX_RESISTOR    /**< Defines the maximum resistor value */
 }GPIO_Resistor_t;
 
+/**
+ * Defines the general porpuse input/output configuration table's elements 
+ * that are used by Gpio_Init to configure the GPIO peripheral.
+ */
+typedef struct
+{
+    GPIO_Port_t port;            /**< Defines the port to be configured */
+    GPIO_Pin_t pin;              /**< Defines the pin to be configured */
+    GPIO_Function_t function;    /**< Defines the function to be configured */
+    GPIO_SlewRate_t slewRate;    /**< Defines the slew rate to be configured */
+    GPIO_Resistor_t resistor;    /**< Defines the internal resistor to be configured */
+}GPIO_Config_t;
+
 /*****************************************************************************
 * Function Prototypes
 *****************************************************************************/
