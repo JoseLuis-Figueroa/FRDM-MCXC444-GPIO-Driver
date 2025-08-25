@@ -16,6 +16,12 @@
 /*****************************************************************************
 * Includes
 *****************************************************************************/
+#include <stdint.h>
+#include <stdio.h>
+//#define NDEBUG          /*To disable assert function*/  
+#include <assert.h>
+#include "gpio_cfg.h"     /*For gpio configuration*/
+#include "MCXC444.h"     /*For peripheral register definition*/
 
 /*****************************************************************************
 * Preprocessor Constants
