@@ -55,7 +55,7 @@ const GPIO_Config_t configTable[] =
 * Function Definitions
 *****************************************************************************/
 /*****************************************************************************
- * Function: GPIO_GetConfigTable()
+ * Function: GPIO_getConfigTable()
 */
 /**
 *\b Description:
@@ -71,14 +71,14 @@ const GPIO_Config_t configTable[] =
  *  
  * \b Example: 
  * @code
- * const GPIO_Config_t * const GPIO_Config = GPIO_GetConfigTable();
- * size_t GPIO_configSize = GPIO_GetConfigTableSize();
+ * const GPIO_Config_t * const GPIO_config = GPIO_getConfigTable();
+ * size_t GPIO_configSize = GPIO_getConfigTableSize();
  * 
- * GPIO_Init(GPIO_Config, GPIO_configSize);
+ * GPIO_init(GPIO_config, GPIO_configSize);
  * @endcode
  * 
- * @see GPIO_GetConfigTable
- * @see GPIO_GetConfigTableSize
+ * @see GPIO_getConfigTable
+ * @see GPIO_getConfigTableSize
  * @see GPIO_init
  * @see GPIO_channelRead
  * @see GPIO_channelWrite
@@ -88,12 +88,46 @@ const GPIO_Config_t configTable[] =
  * 
  * 
 *****************************************************************************/
-const GPIO_Config_t * const GPIO_GetConfigTable(void)
+const GPIO_Config_t * const GPIO_getConfigTable(void)
 {
    /* The cast is performed to ensure that the address of the first element 
     * of configuration table is returned as a constant pointer and not a
     * pointer that can be modified
    */
   return (const GPIO_Config_t*)&configTable[0];
+}
 
+/*****************************************************************************
+ * Function: GPIO_getConfigTableSize()
+*/
+/**
+*\b Description:
+ * This function returns the number of pins defined in the configuration
+ * table.
+ * 
+ * PRE-CONDITION: configuration table needs to be populated (sizeof > 0) <br>
+ * 
+ * @return The number of pins defined in the configuration table.
+ * 
+ * \b Example: 
+ * @code
+ * const GPIO_Config_t * const GPIO_config = GPIO_getConfigTable();
+ * size_t GPIO_configSize = GPIO_getConfigTableSize();
+ * 
+ * GPIO_Init(GPIO_config, GPIO_configSize);
+ * @endcode
+ * 
+ * @see GPIO_getConfigTable
+ * @see GPIO_getConfigTableSize
+ * @see GPIO_init
+ * @see GPIO_channelRead
+ * @see GPIO_channelWrite
+ * @see GPIO_channelToggle
+ * @see GPIO_registerWrite
+ * @see GPIO_registerRead
+ * 
+*****************************************************************************/
+size_t GPIO_getConfigTableSize(void)
+{
+   return sizeof(configTable)/sizeof(configTable[0]);
 }
