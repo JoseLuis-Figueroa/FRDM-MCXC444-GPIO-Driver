@@ -21,7 +21,7 @@
 //#define NDEBUG          /*To disable assert function*/  
 #include <assert.h>
 #include "gpio_cfg.h"     /*For gpio configuration*/
-#include "MCXC444.h"     /*For peripheral register definition*/
+#include "MCXC444.h"      /*For peripheral register definition*/
 
 /*****************************************************************************
 * Preprocessor Constants
@@ -51,5 +51,19 @@ typedef struct
 /*****************************************************************************
 * Function Prototypes
 *****************************************************************************/
+#ifdef __cplusplus
+extern "C"{
+#endif
+
+void GPIO_init(const GPIO_Config_t * const ConfigTable, size_t size);
+GPIO_PinState_t GPIO_pinRead(const GPIO_PinConfig_t * const PinConfig);
+void GPIO_pinWrite(const GPIO_PinConfig_t * const PinConfig, GPIO_PinState_t state);
+void GPIO_pinToggle(const GPIO_PinConfig_t * const PinConfig);
+void GPIO_registerWrite(uint32_t address, uint32_t value);
+uint32_t GPIO_registerRead(uint32_t address);
+
+#ifdef _cplusplus
+} // extern "C"
+#endif
 
 #endif /* GPIO_H */
