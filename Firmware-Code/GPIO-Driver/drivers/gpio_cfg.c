@@ -71,10 +71,10 @@ const GPIO_Config_t configTable[] =
  *  
  * \b Example: 
  * @code
- * const GPIO_Config_t * const GPIO_config = GPIO_getConfigTable();
- * size_t GPIO_configSize = GPIO_getConfigTableSize();
+ * const GPIO_Config_t * const GPIO_Config = GPIO_getConfigTable();
+ * size_t configSizeGpio = GPIO_getConfigTableSize();
  * 
- * GPIO_init(GPIO_config, GPIO_configSize);
+ * GPIO_init(GPIO_Config, configSizeGpio);
  * @endcode
  * 
  * @see GPIO_getConfigTable
@@ -111,10 +111,10 @@ const GPIO_Config_t * const GPIO_getConfigTable(void)
  * 
  * \b Example: 
  * @code
- * const GPIO_Config_t * const GPIO_config = GPIO_getConfigTable();
- * size_t GPIO_configSize = GPIO_getConfigTableSize();
+ * const GPIO_Config_t * const GPIO_Config = GPIO_getConfigTable();
+ * size_t configSizeGpio = GPIO_getConfigTableSize();
  * 
- * GPIO_Init(GPIO_config, GPIO_configSize);
+ * GPIO_Init(GPIO_Config, configSizeGpio);
  * @endcode
  * 
  * @see GPIO_getConfigTable
