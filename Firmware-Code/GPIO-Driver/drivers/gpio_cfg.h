@@ -158,11 +158,11 @@ typedef enum
  */
 typedef struct
 {
-    GPIO_Port_t port;            /**< Defines the port to be configured */
-    GPIO_Pin_t pin;              /**< Defines the pin to be configured */
-    GPIO_Function_t function;    /**< Defines the function to be configured */
-    GPIO_SlewRate_t slewRate;    /**< Defines the slew rate to be configured */
-    GPIO_Resistor_t resistor;    /**< Defines the internal resistor to be configured */
+    GPIO_Port_t Port;            /**< Defines the port to be configured */
+    GPIO_Pin_t Pin;              /**< Defines the pin to be configured */
+    GPIO_Function_t Function;    /**< Defines the function to be configured */
+    GPIO_SlewRate_t SlewRate;    /**< Defines the slew rate to be configured */
+    GPIO_Resistor_t Resistor;    /**< Defines the internal resistor to be configured */
 }GPIO_Config_t;
 
 /*****************************************************************************
