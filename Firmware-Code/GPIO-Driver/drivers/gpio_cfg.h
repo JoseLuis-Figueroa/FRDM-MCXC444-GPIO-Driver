@@ -11,7 +11,6 @@
  * @copyright Copyright (c) 2025 Jose Luis Figueroa. MIT License.
  * 
 */
-
 #ifndef GPIO_CFG_H
 #define GPIO_CFG_H
 
@@ -51,7 +50,7 @@ typedef enum
     GPIO_PTB,         /**< Port B*/
     GPIO_PTC,         /**< Port C*/
     GPIO_PTD,         /**< Port D*/
-    GPIO_PTH,         /**< Port H*/
+    GPIO_PTE,         /**< Port E*/
     GPIO_MAX_PORT     /**< Defines the maximum Port*/
 }GPIO_Port_t;
 
@@ -173,8 +172,8 @@ typedef struct
 extern "C" {
 #endif
 
-const GPIO_Config_t * const GPIO_GetConfigTable(void);
-size_t GPIO_GetConfigTableSize(void);
+const GPIO_Config_t * const GPIO_getConfigTable(void);
+size_t GPIO_getConfigTableSize(void);
 
 #ifdef __cplusplus
 } // extern "C"
