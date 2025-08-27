@@ -58,6 +58,16 @@ static uint32_t volatile * const portDataInputRegisters[NUMBER_OF_PORTS] =
     (uint32_t*)&GPIOE->PDIR   /**< Pointer to the port data input register of PORTE */
 };
 
+/* Define an array of pointers to the port data direction register */
+static uint32_t volatile * const portDataDirectionRegisters[NUMBER_OF_PORTS] = 
+{
+    (uint32_t*)&GPIOA->PDDR,  /**< Pointer to the port data direction register of PORTA */
+    (uint32_t*)&GPIOB->PDDR,  /**< Pointer to the port data direction register of PORTB */
+    (uint32_t*)&GPIOC->PDDR,  /**< Pointer to the port data direction register of PORTC */
+    (uint32_t*)&GPIOD->PDDR,  /**< Pointer to the port data direction register of PORTD */
+    (uint32_t*)&GPIOE->PDDR   /**< Pointer to the port data direction register of PORTE */
+};
+
 /*****************************************************************************
 * Function Prototypes
 *****************************************************************************/
@@ -72,7 +82,7 @@ static uint32_t volatile * const portDataInputRegisters[NUMBER_OF_PORTS] =
  * This function is used to initialize the GPIO based on the configuration  
  * table defined in gpio_cfg module.
  * 
- * PRE-CONDITION: The MCU clocks must be configured and enabled. <br>
+ * PRE-CONDITION: The GPIO port clock must be enabled in the SIM module. <br>
  * PRE-CONDITION: Configuration table needs to be populated (sizeof > 0) <br>
  * PRE-CONDITION: NUMBER_OF_PORTS > 0 <br>
  * PRE-CONDITION: The setting is within the maximum values (GPIO_MAX). <br>
@@ -80,8 +90,8 @@ static uint32_t volatile * const portDataInputRegisters[NUMBER_OF_PORTS] =
  * POST-CONDITION: The GPIO peripheral is set up with the configuration 
  * settings.
  * 
- * @param[in]   GPIO_Config is a pointer to the configuration table that contains 
- *               the initialization for the peripheral.
+ * @param[in]   GPIO_Config is a pointer to the configuration table that 
+ *              contains the initialization for the peripheral.
  * @param[in]   configSizeGpio is the size of the configuration table.
  * 
  * @return  void
@@ -126,16 +136,38 @@ void GPIO_init(const GPIO_Config_t * const ConfigTable, size_t size)
 
         /* Get a pointer to the pin control register to be configured */
         uint32_t volatile * const pcr = &pinControlRegisters[ConfigTable[i].Port][ConfigTable[i].Pin];
-
-        /* Set the mode/function of the GPIO pin on the pin control register*/
-        if(ConfigTable[i].Function >= GPIO_MAX_FUNCTION)
+        
+        /* Set the function of the GPIO pin and set the pin as input or
+         * output if the function is GPIO.
+        */
+        if(ConfigTable[i].Function < GPIO_MAX_FUNCTION)
+        {
+            /* Set the pin function */
+            *pcr = (*pcr & ~PORT_PCR_MUX_MASK) | PORT_PCR_MUX(ConfigTable[i].Function);
+            
+            if(ConfigTable[i].Function == GPIO_AF1)
+            {
+                switch(ConfigTable[i].Mode)
+                {
+                    case GPIO_INPUT:
+                        /* Set the pin as input */
+                        *portDataDirectionRegisters[ConfigTable[i].Port] &=~ (1UL << ConfigTable[i].Pin);
+                    break;
+                    case GPIO_OUTPUT:
+                        /* Set the pin as output */
+                        *portDataDirectionRegisters[ConfigTable[i].Port] |= (1UL << ConfigTable[i].Pin);
+                    break;
+                    default:
+                        assert(ConfigTable[i].Mode < GPIO_MODE_MAX);
+                    break;
+                }
+            }    
+        }
+        else
         {
             assert(ConfigTable[i].Function < GPIO_MAX_FUNCTION);
         }
-        else 
-        {
-            *pcr = (*pcr & ~PORT_PCR_MUX_MASK) | PORT_PCR_MUX(ConfigTable[i].Function);
-        }
+
 
         /* Set the slew rate of the GPIO pin on the pin control register*/
         if(ConfigTable[i].SlewRate >= GPIO_MAX_SPEED)
@@ -170,3 +202,47 @@ void GPIO_init(const GPIO_Config_t * const ConfigTable, size_t size)
         }
     }
 }
+
+/*****************************************************************************
+ * Function: GPIO_pinRead()
+*//**
+ *\b Description:
+ * This function is used to reads the state of a specified pin.
+ * This function reads the state of a digital input/output pin specified by
+ * the GPIO_PinConfig_t structure, which contains the port and pin 
+ * information.
+ * 
+ * PRE-CONDITION: The pin is configured as INPUT <br>
+ * PRE-CONDITION: The pin is configured as GPIO <br>
+ * PRE-CONDITION: DioPinConfig_t needs to be populated (sizeof > 0) <br>
+ * PRE-CONDITION: The Port is within the maximum DioPort_t. <br>
+ * PRE-CONDITION: The Pin is within the maximum DioPin_t. 
+ * definition. <br>
+ * 
+ * POST-CONDITION: The channel state is returned. <br>
+ * 
+ * @param[in] PinConfig A pointer to a structure containing the port and pin 
+ * to be read.
+ * 
+ * @return    DioPinState_t The state of the pin (high or low).
+ * 
+ * \b Example:
+ * @code
+ * const DioPinConfig_t  UserButton1= 
+ * {
+ *      .Port = DIO_PC, 
+ *      .Pin = DIO_PC13
+ * };
+ *  bool pin = DIO_pinRead(&UserButton1);
+ * @endcode
+ * 
+ * @see DIO_ConfigGet
+ * @see DIO_configSizeGet
+ * @see DIO_init
+ * @see DIO_pinRead
+ * @see DIO_pinWrite
+ * @see DIO_pinToggle
+ * @see DIO_registerWrite
+ * @see DIO_registerRead
+ * 
+**********************************************************************/
