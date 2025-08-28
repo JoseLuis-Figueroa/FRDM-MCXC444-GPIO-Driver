@@ -81,12 +81,11 @@ const GPIO_Config_t configTable[] =
  * @see GPIO_getConfigTable
  * @see GPIO_getConfigTableSize
  * @see GPIO_init
- * @see GPIO_channelRead
- * @see GPIO_channelWrite
- * @see GPIO_channelToggle
+ * @see GPIO_pinRead
+ * @see GPIO_pinWrite
+ * @see GPIO_pinToggle
  * @see GPIO_registerWrite
- * @see GPIO_registerRead
- * 
+ * @see GPIO_registerRead 
  * 
 *****************************************************************************/
 const GPIO_Config_t * const GPIO_getConfigTable(void)
@@ -121,11 +120,11 @@ const GPIO_Config_t * const GPIO_getConfigTable(void)
  * @see GPIO_getConfigTable
  * @see GPIO_getConfigTableSize
  * @see GPIO_init
- * @see GPIO_channelRead
- * @see GPIO_channelWrite
- * @see GPIO_channelToggle
+ * @see GPIO_pinRead
+ * @see GPIO_pinWrite
+ * @see GPIO_pinToggle
  * @see GPIO_registerWrite
- * @see GPIO_registerRead
+ * @see GPIO_registerRead 
  * 
 *****************************************************************************/
 size_t GPIO_getConfigTableSize(void)

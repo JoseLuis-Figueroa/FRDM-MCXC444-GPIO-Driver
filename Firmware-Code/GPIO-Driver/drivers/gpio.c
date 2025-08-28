@@ -108,11 +108,11 @@ static uint32_t volatile * const portDataDirectionRegister[NUMBER_OF_PORTS] =
  * @see GPIO_getConfigTable
  * @see GPIO_getConfigTableSize
  * @see GPIO_init
- * @see GPIO_channelRead
- * @see GPIO_channelWrite
- * @see GPIO_channelToggle
+ * @see GPIO_pinRead
+ * @see GPIO_pinWrite
+ * @see GPIO_pinToggle
  * @see GPIO_registerWrite
- * @see GPIO_registerRead
+ * @see GPIO_registerRead 
  * 
 *****************************************************************************/
 void GPIO_init(const GPIO_Config_t * const ConfigTable, size_t size)
@@ -238,11 +238,11 @@ void GPIO_init(const GPIO_Config_t * const ConfigTable, size_t size)
  * @see GPIO_getConfigTable
  * @see GPIO_getConfigTableSize
  * @see GPIO_init
- * @see GPIO_channelRead
- * @see GPIO_channelWrite
- * @see GPIO_channelToggle
+ * @see GPIO_pinRead
+ * @see GPIO_pinWrite
+ * @see GPIO_pinToggle
  * @see GPIO_registerWrite
- * @see GPIO_registerRead
+ * @see GPIO_registerRead 
  * 
 **********************************************************************/
 GPIO_PinState_t GPIO_pinRead(const GPIO_PinConfig_t * const PinConfig)
