@@ -29,7 +29,7 @@
 * Module Variable Definitions
 *****************************************************************************/
 /* Define an array of pointers to the pin control register */
-static uint32_t volatile * const pinControlRegisters[NUMBER_OF_PORTS] = 
+static uint32_t volatile * const pinControlRegister[NUMBER_OF_PORTS] = 
 {
     (uint32_t*)&PORTA->PCR[0],  /**< Pointer to the first pin control register of PORTA */
     (uint32_t*)&PORTB->PCR[0],  /**< Pointer to the first pin control register of PORTB */
@@ -39,7 +39,7 @@ static uint32_t volatile * const pinControlRegisters[NUMBER_OF_PORTS] =
 };
 
 /* Define an array of pointers to the port data output register */
-static uint32_t volatile * const portDataOutputRegisters[NUMBER_OF_PORTS] = 
+static uint32_t volatile * const portDataOutputRegister[NUMBER_OF_PORTS] = 
 {
     (uint32_t*)&GPIOA->PDOR,  /**< Pointer to the port data output register of PORTA */
     (uint32_t*)&GPIOB->PDOR,  /**< Pointer to the port data output register of PORTB */
@@ -49,7 +49,7 @@ static uint32_t volatile * const portDataOutputRegisters[NUMBER_OF_PORTS] =
 };
 
 /* Define an array of pointers to the port data input register */
-static uint32_t volatile * const portDataInputRegisters[NUMBER_OF_PORTS] = 
+static uint32_t volatile * const portDataInputRegister[NUMBER_OF_PORTS] = 
 {
     (uint32_t*)&GPIOA->PDIR,  /**< Pointer to the port data input register of PORTA */
     (uint32_t*)&GPIOB->PDIR,  /**< Pointer to the port data input register of PORTB */
@@ -59,7 +59,7 @@ static uint32_t volatile * const portDataInputRegisters[NUMBER_OF_PORTS] =
 };
 
 /* Define an array of pointers to the port data direction register */
-static uint32_t volatile * const portDataDirectionRegisters[NUMBER_OF_PORTS] = 
+static uint32_t volatile * const portDataDirectionRegister[NUMBER_OF_PORTS] = 
 {
     (uint32_t*)&GPIOA->PDDR,  /**< Pointer to the port data direction register of PORTA */
     (uint32_t*)&GPIOB->PDDR,  /**< Pointer to the port data direction register of PORTB */
@@ -90,9 +90,9 @@ static uint32_t volatile * const portDataDirectionRegisters[NUMBER_OF_PORTS] =
  * POST-CONDITION: The GPIO peripheral is set up with the configuration 
  * settings.
  * 
- * @param[in]   GPIO_Config is a pointer to the configuration table that 
+ * @param[in]   ConfigTable is a pointer to the configuration table that 
  *              contains the initialization for the peripheral.
- * @param[in]   configSizeGpio is the size of the configuration table.
+ * @param[in]   size is the size of the configuration table.
  * 
  * @return  void
  * 
@@ -135,7 +135,7 @@ void GPIO_init(const GPIO_Config_t * const ConfigTable, size_t size)
         assert(ConfigTable[i].Pin < GPIO_MAX_PIN);
 
         /* Get a pointer to the pin control register to be configured */
-        uint32_t volatile * const pcr = &pinControlRegisters[ConfigTable[i].Port][ConfigTable[i].Pin];
+        uint32_t volatile * const pcr = &pinControlRegister[ConfigTable[i].Port][ConfigTable[i].Pin];
         
         /* Set the function of the GPIO pin and set the pin as input or
          * output if the function is GPIO.
@@ -151,11 +151,11 @@ void GPIO_init(const GPIO_Config_t * const ConfigTable, size_t size)
                 {
                     case GPIO_INPUT:
                         /* Set the pin as input */
-                        *portDataDirectionRegisters[ConfigTable[i].Port] &=~ (1UL << ConfigTable[i].Pin);
+                        *portDataDirectionRegister[ConfigTable[i].Port] &=~ (1UL << ConfigTable[i].Pin);
                     break;
                     case GPIO_OUTPUT:
                         /* Set the pin as output */
-                        *portDataDirectionRegisters[ConfigTable[i].Port] |= (1UL << ConfigTable[i].Pin);
+                        *portDataDirectionRegister[ConfigTable[i].Port] |= (1UL << ConfigTable[i].Pin);
                     break;
                     default:
                         assert(ConfigTable[i].Mode < GPIO_MODE_MAX);
@@ -212,37 +212,52 @@ void GPIO_init(const GPIO_Config_t * const ConfigTable, size_t size)
  * the GPIO_PinConfig_t structure, which contains the port and pin 
  * information.
  * 
- * PRE-CONDITION: The pin is configured as INPUT <br>
  * PRE-CONDITION: The pin is configured as GPIO <br>
- * PRE-CONDITION: DioPinConfig_t needs to be populated (sizeof > 0) <br>
- * PRE-CONDITION: The Port is within the maximum DioPort_t. <br>
- * PRE-CONDITION: The Pin is within the maximum DioPin_t. 
- * definition. <br>
+ * PRE-CONDITION: The pin is configured as INPUT <br>
+ * PRE-CONDITION: GPIO_PinConfig_t needs to be populated (sizeof > 0) <br>
+ * PRE-CONDITION: The Port is within the maximum GPIO_Port_t. <br>
+ * PRE-CONDITION: The Pin is within the maximum GPIO_Pin_t. <br>
  * 
- * POST-CONDITION: The channel state is returned. <br>
+ * POST-CONDITION: The pin state is returned. <br>
  * 
  * @param[in] PinConfig A pointer to a structure containing the port and pin 
  * to be read.
  * 
- * @return    DioPinState_t The state of the pin (high or low).
+ * @return GPIO_PinState_t The state of the pin (high or low).
  * 
  * \b Example:
  * @code
- * const DioPinConfig_t  UserButton1= 
+ * const GPIO_PinConfig_t  UserButton1= 
  * {
- *      .Port = DIO_PC, 
- *      .Pin = DIO_PC13
+ *      .Port = GPIO_PTA, 
+ *      .Pin = GPIO_PT13
  * };
- *  bool pin = DIO_pinRead(&UserButton1);
+ *  bool pin = GPIO_pinRead(&UserButton1);
  * @endcode
  * 
- * @see DIO_ConfigGet
- * @see DIO_configSizeGet
- * @see DIO_init
- * @see DIO_pinRead
- * @see DIO_pinWrite
- * @see DIO_pinToggle
- * @see DIO_registerWrite
- * @see DIO_registerRead
+ * @see GPIO_getConfigTable
+ * @see GPIO_getConfigTableSize
+ * @see GPIO_init
+ * @see GPIO_channelRead
+ * @see GPIO_channelWrite
+ * @see GPIO_channelToggle
+ * @see GPIO_registerWrite
+ * @see GPIO_registerRead
  * 
 **********************************************************************/
+GPIO_PinState_t GPIO_pinRead(const GPIO_PinConfig_t * const PinConfig)
+{
+    /* Prevent to assign a value out of the range of the port and pin.
+     * The registers arrays are limited to the NUMBER_OF_PORTS, higher 
+     * value can cause a memory violation.
+    */
+    assert(PinConfig->Port < GPIO_MAX_PORT);
+    assert(PinConfig->Pin < GPIO_MAX_PIN);
+
+    /* Read the port associated with the desired pin */
+    uint32_t portState = *portDataInputRegister[PinConfig->Port];
+    /* Determinate the Port bit associated with this pin*/
+    uint32_t pinMask = (1UL<<(PinConfig->Pin));
+
+    return ((portState & pinMask) ? GPIO_HIGH : GPIO_LOW); 
+}
