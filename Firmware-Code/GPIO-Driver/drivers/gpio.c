@@ -292,13 +292,13 @@ GPIO_PinState_t GPIO_pinRead(const GPIO_PinConfig_t * const PinConfig)
  * @code
  * const GPIO_PinConfig_t  UserLED1= 
  * {
- *      .Port = DIO_PTE, 
- *      .Pin = DIO_PTE29
+ *      .Port = GPIO_PTE, 
+ *      .Pin = GPIO_PTE29
  * };
  * const GPIO_PinConfig_t  UserLED2= 
  * {
- *      .Port = DIO_PTE, 
- *      .Pin = DIO_PTE31
+ *      .Port = GPIO_PTE, 
+ *      .Pin = GPIO_PTE31
  * };
  * GPIO_pinWrite(&UserLED1, GPIO_LOW);    //Set the pin low
  * GPIO_pinWrite(&UserLED2, GPIO_HIGH);   //Set the pin high
@@ -389,4 +389,46 @@ void GPIO_pinToggle(const GPIO_PinConfig_t * const PinConfig)
     assert(PinConfig->Pin < GPIO_MAX_PIN);
 
     *portDataOutputRegister[PinConfig->Port] ^= (1UL<<(PinConfig->Pin));
+}
+
+/**********************************************************************
+ * Function: GPIO_registerWrite()
+*//**
+ *\b Description:
+ * This function is used to directly address and modify a GPIO register.
+ * The function should be used to access specialized functionality in 
+ * the GPIO peripheral that is not exposed by any other function of the
+ * interface.
+ * 
+ * PRE-CONDITION: Address is within the boundaries of the GPIO register
+ * address space. <br>
+ * 
+ * POST-CONDITION: The register located at address with be updated with
+ * value. <br>
+ * 
+ * @param[in]   address is a register address within the GPIO peripheral
+ *              map.
+ * @param[in]   value is the value to set the GPIO register. 
+ * 
+ * @return void
+ * 
+ * \b Example
+ * @code
+ *  GPIO_registerWrite(0x1000, 0x15);
+ * @endcode
+ * 
+ * @see GPIO_getConfigTable
+ * @see GPIO_getConfigTableSize
+ * @see GPIO_init
+ * @see GPIO_pinRead
+ * @see GPIO_pinWrite
+ * @see GPIO_pinToggle
+ * @see GPIO_registerWrite
+ * @see GPIO_registerRead 
+ * 
+**********************************************************************/ 
+void GPIO_registerWrite(uint32_t address, uint32_t value)
+{
+    volatile uint32_t * const registerPointer = (uint32_t*)address;
+    *registerPointer = value;
 }
