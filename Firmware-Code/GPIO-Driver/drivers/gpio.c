@@ -432,3 +432,44 @@ void GPIO_registerWrite(uint32_t address, uint32_t value)
     volatile uint32_t * const registerPointer = (uint32_t*)address;
     *registerPointer = value;
 }
+
+/**********************************************************************
+ * Function: GPIO_registerRead()
+*//**
+ *\b Description:
+ * This function is used to directly address a GPIO register. The 
+ * function should be used to access specialized functionality in the 
+ * GPIO peripheral that is not exposed by any other function of the 
+ * interface.
+ * 
+ * PRE-CONDITION: Address is within the boundaries of the GPIO register 
+ * address space. <br>
+ * 
+ * POST-CONDITION: The value stored in the register is returned to the 
+ * caller. <br>
+ * 
+ * @param[in]   address is the address of the GPIO register to read.
+ * 
+ * @return  The current value of the GPIO register.
+ * 
+ * \b Example:
+ * @code
+ * type GPIOValue = GPIO_registerRead(0x1000);
+ * @endcode
+ * 
+ * @see GPIO_getConfigTable
+ * @see GPIO_getConfigTableSize
+ * @see GPIO_init
+ * @see GPIO_pinRead
+ * @see GPIO_pinWrite
+ * @see GPIO_pinToggle
+ * @see GPIO_registerWrite
+ * @see GPIO_registerRead 
+ *
+ **********************************************************************/ 
+uint32_t GPIO_registerRead(uint32_t address)
+{
+    volatile uint32_t * const registerPointer = (uint32_t*)address;
+
+    return *registerPointer;
+}
