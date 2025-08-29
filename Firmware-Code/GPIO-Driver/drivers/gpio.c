@@ -283,7 +283,7 @@ GPIO_PinState_t GPIO_pinRead(const GPIO_PinConfig_t * const PinConfig)
  * 
  * @param[in]   pinConfig A pointer to a structure containing the port 
  *              and pin to be written.
- * @param[in]   State is HIGH or LOW as defined in the DioPinState_t 
+ * @param[in]   State is HIGH or LOW as defined in the GPIO_PinState_t 
  *              enum. 
  * 
  * @return      void
@@ -335,4 +335,58 @@ void GPIO_pinWrite(const GPIO_PinConfig_t * const PinConfig, GPIO_PinState_t Sta
     {
         assert(State < GPIO_PIN_STATE_MAX);
     }
+}
+
+/**********************************************************************
+ * Function: GPIO_pinToggle()
+*//**
+ *\b Description:
+ * This function is used to toggle the current state of a pin. 
+ * This function reads the state of a digital input/output pin 
+ * specified by the GPIO_PinConfig_t structure, which contains the port 
+ * and pin information.
+ * 
+ * PRE-CONDITION: The channel is configured as GPIO <br>
+ * PRE-CONDITION: The channel is configured as output <br>
+ * PRE-CONDITION: GPIO_PinConfig_t needs to be populated (sizeof > 0) <br>
+ * PRE-CONDITION: The Port is within the maximum GPIO_Port_t. <br>
+ * PRE-CONDITION: The Pin is within the maximum GPIO_Pin_t. <br>
+ *
+ * POST-CONDITION: The pin state is toggled. <br>
+ * 
+ * @param[in]   pinConfig A pointer to a structure containing the port 
+ *              and pin to be toggled.
+ * 
+ * @return  void
+ * 
+ * \b Example:
+ * @code
+ * const GPIO_PinConfig_t  UserLED1= 
+ * {
+ *      .Port = GPIO_PTA, 
+ *      .Pin = GPIO_PTA5
+ * };
+ * GPIO_pinToggle(&UserLED1);
+ * @endcode
+ * 
+ * @see GPIO_getConfigTable
+ * @see GPIO_getConfigTableSize
+ * @see GPIO_init
+ * @see GPIO_pinRead
+ * @see GPIO_pinWrite
+ * @see GPIO_pinToggle
+ * @see GPIO_registerWrite
+ * @see GPIO_registerRead 
+ * 
+ **********************************************************************/
+void GPIO_pinToggle(const GPIO_PinConfig_t * const PinConfig)
+{
+    /* Prevent to assign a value out of the range of the port and pin.
+     * The registers arrays are limited to the NUMBER_OF_PORTS, higher 
+     * value can cause a memory violation.
+    */
+    assert(PinConfig->Port < GPIO_MAX_PORT);
+    assert(PinConfig->Pin < GPIO_MAX_PIN);
+
+    *portDataOutputRegister[PinConfig->Port] ^= (1UL<<(PinConfig->Pin));
 }
