@@ -40,8 +40,8 @@
 *****************************************************************************/
 typedef struct
 {
-    DioPort_t Port;             /**< The I/O port */
-    DioPin_t Pin;               /**< The I/O pin */
+    GPIO_Port_t Port;             /**< The I/O port */
+    GPIO_Pin_t Pin;               /**< The I/O pin */
 }GPIO_PinConfig_t;
 
 /*****************************************************************************

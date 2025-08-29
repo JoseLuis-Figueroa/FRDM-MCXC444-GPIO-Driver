@@ -11,7 +11,6 @@
  * @copyright Copyright (c) 2025 Jose Luis Figueroa. MIT License.
  * 
 */
-
 #ifndef GPIO_CFG_H
 #define GPIO_CFG_H
 
@@ -51,7 +50,7 @@ typedef enum
     GPIO_PTB,         /**< Port B*/
     GPIO_PTC,         /**< Port C*/
     GPIO_PTD,         /**< Port D*/
-    GPIO_PTH,         /**< Port H*/
+    GPIO_PTE,         /**< Port E*/
     GPIO_MAX_PORT     /**< Defines the maximum Port*/
 }GPIO_Port_t;
 
@@ -132,6 +131,16 @@ typedef enum
     GPIO_MAX_FUNCTION/**< Defines the maximum function value */
 }GPIO_Function_t;
 
+/*
+ * Defines the possible mode of GPIO pin.
+*/
+typedef enum
+{
+    GPIO_INPUT,        /**< Defines the pin as an input */
+    GPIO_OUTPUT,       /**< Defines the pin as an output */
+    GPIO_MODE_MAX  /**< Defines the maximum pin type value */
+}GPIO_Mode_t;
+
 /**
  * Defines the slew rate settings available.
  */
@@ -159,11 +168,12 @@ typedef enum
  */
 typedef struct
 {
-    GPIO_Port_t port;            /**< Defines the port to be configured */
-    GPIO_Pin_t pin;              /**< Defines the pin to be configured */
-    GPIO_Function_t function;    /**< Defines the function to be configured */
-    GPIO_SlewRate_t slewRate;    /**< Defines the slew rate to be configured */
-    GPIO_Resistor_t resistor;    /**< Defines the internal resistor to be configured */
+    GPIO_Port_t Port;            /**< Defines the port to be configured */
+    GPIO_Pin_t Pin;              /**< Defines the pin to be configured */
+    GPIO_Function_t Function;    /**< Defines the function to be configured */
+    GPIO_Mode_t Mode;            /**< Defines the mode to be configured */
+    GPIO_SlewRate_t SlewRate;    /**< Defines the slew rate to be configured */
+    GPIO_Resistor_t Resistor;    /**< Defines the internal resistor to be configured */
 }GPIO_Config_t;
 
 /*****************************************************************************
@@ -173,8 +183,8 @@ typedef struct
 extern "C" {
 #endif
 
-const GPIO_Config_t * const GPIO_GetConfigTable(void);
-size_t GPIO_GetConfigTableSize(void);
+const GPIO_Config_t * const GPIO_getConfigTable(void);
+size_t GPIO_getConfigTableSize(void);
 
 #ifdef __cplusplus
 } // extern "C"
