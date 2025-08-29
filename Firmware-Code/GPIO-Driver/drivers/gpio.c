@@ -261,3 +261,78 @@ GPIO_PinState_t GPIO_pinRead(const GPIO_PinConfig_t * const PinConfig)
 
     return ((portState & pinMask) ? GPIO_HIGH : GPIO_LOW); 
 }
+
+/**********************************************************************
+ * Function: GPIO_pinWrite()
+*//**
+ *\b Description:
+ * This function is used to write the state of a pin as either logic 
+ * high or low. it reads the state of a digital input/output pin 
+ * specified by the GPIO_PinConfig_t structure and the GPIO_PinState_t to 
+ * define the desired state, which contains the port and pin 
+ * information.
+ * 
+ * PRE-CONDITION: The pin is configured as GPIO <br>
+ * PRE-CONDITION: The pin is configured as OUTPUT <br>
+ * PRE-CONDITION: GPIO_PinConfig_t needs to be populated (sizeof > 0) <br>
+ * PRE-CONDITION: The Port is within the maximum GPIO_Port_t. <br>
+ * PRE-CONDITION: The Pin is within the maximum GPIO_Pin_t. <br>
+ * PRE-CONDITION: The State is within the maximum GPIO_PinState_t. <br>
+ * 
+ * POST-CONDITION: The pin state is stated. <br>
+ * 
+ * @param[in]   pinConfig A pointer to a structure containing the port 
+ *              and pin to be written.
+ * @param[in]   State is HIGH or LOW as defined in the DioPinState_t 
+ *              enum. 
+ * 
+ * @return      void
+ * 
+ * \b Example:
+ * @code
+ * const GPIO_PinConfig_t  UserLED1= 
+ * {
+ *      .Port = DIO_PTE, 
+ *      .Pin = DIO_PTE29
+ * };
+ * const GPIO_PinConfig_t  UserLED2= 
+ * {
+ *      .Port = DIO_PTE, 
+ *      .Pin = DIO_PTE31
+ * };
+ * GPIO_pinWrite(&UserLED1, GPIO_LOW);    //Set the pin low
+ * GPIO_pinWrite(&UserLED2, GPIO_HIGH);   //Set the pin high
+ * @endcode
+ * 
+ * @see GPIO_getConfigTable
+ * @see GPIO_getConfigTableSize
+ * @see GPIO_init
+ * @see GPIO_pinRead
+ * @see GPIO_pinWrite
+ * @see GPIO_pinToggle
+ * @see GPIO_registerWrite
+ * @see GPIO_registerRead 
+ * 
+ **********************************************************************/
+void GPIO_pinWrite(const GPIO_PinConfig_t * const PinConfig, GPIO_PinState_t State)
+{
+    /* Prevent to assign a value out of the range of the port and pin.
+     * The registers arrays are limited to the NUMBER_OF_PORTS, higher 
+     * value can cause a memory violation.
+    */
+    assert(PinConfig->Port < GPIO_MAX_PORT);
+    assert(PinConfig->Pin < GPIO_MAX_PIN);
+
+    if(State == GPIO_HIGH)
+    {
+        *portDataOutputRegister[PinConfig->Port] |= (1UL<<(PinConfig->Pin));
+    }
+    else if (State == GPIO_LOW)
+    {
+        *portDataOutputRegister[PinConfig->Port] &= ~(1UL<<(PinConfig->Pin));
+    }
+    else
+    {
+        assert(State < GPIO_PIN_STATE_MAX);
+    }
+}
