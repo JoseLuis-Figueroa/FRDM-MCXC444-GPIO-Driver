@@ -14,7 +14,7 @@ The project follows **layered driver design principles** (driver ↔ HAL ↔ app
   - [Dependencies](#dependencies)
   - [Getting the Source](#getting-the-source)
   - [Building](#building)
-  - [Running](#running)
+  - [Running Tests](#running-tests)
 - [Usage](#usage)
 - [Release Process](#release-process)
 - [How to Get Help](#how-to-get-help)
@@ -57,6 +57,59 @@ This project serves as the foundation for **higher-level reusable drivers** and 
   - **Toolchain**: ARM GNU Toolchain (`arm-none-eabi-gcc`).
   - **Build System**: Makefile (auto-generated in `/Debug`).
   - **Documentation**: Doxygen (planned).
+
+**[Back to top](#table-of-contents)**
+
+---
+
+## Project Status
+**Current Version:** v0.0  
+**Tested On:** FRDM-MCXC444 board  
+
+- ✅ GPIO configuration table support.  
+- ✅ Input/output setup with assertions.  
+- ✅ Pin read/write/toggle functions.  
+- ⏳ Integration with other drivers.   
+- ⏳ Unit testing.  
+
+---
+
+## Getting Started
+
+### Dependencies
+Install the following tools before building:
+- [MCUXpresso](https://www.nxp.com/design/design-center/software/development-software/mcuxpresso-software-and-tools-/mcuxpresso-integrated-development-environment-ide:MCUXpresso-IDE)
+- [GNU ARM Embedded Toolchain](https://developer.arm.com/downloads/-/gnu-rm)
+- [Software Development Kit Builder](https://mcuxpresso.nxp.com/builder?hw=FRDM-MCXC444)
+- [Doxygen](https://doxygen.nl/manual/install.html) (for documentation)
+
+### Getting the Source
+Clone the GitHub repository:
+```bash
+git clone https://github.com/JoseLuis-Figueroa/FRDM-MCXC444-GPIO-Driver.git
+cd FRDM-MCXC444-GPIO-Driver
+```
+
+### Building
+
+You can build the project using either the **MCUXpresso IDE** or the **Makefile**.
+
+- **MCUXpresso (IDE):** Simply click the "_Build_" button in the toolbar. This will compile your project using the selected environment. 
+
+- **Build using the Makefile:** Run the following command to build all environments defined in `Makefile` located in the Firmware-Code/GPIO-Driver//Debug directory:
+
+```
+cd Firmware-Code/GPIO-Driver/Debug
+make all
+```
+
+### Running Tests
+
+You can test on actual hardware by uploading the code using the **MCUXpresso IDE**. Simply click the "_Start debugging project_" button in the toolbar. This will run and debug your project using the selected environment in your `Makefile`.
+
+### Installation
+
+No separate installation needed—firmware is flashed directly to the microcontroller using the MCU-Link OB based on the NXP CMSIS-DAP protocol.
 
 **[Back to top](#table-of-contents)**
 
