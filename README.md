@@ -114,3 +114,17 @@ No separate installation needed—firmware is flashed directly to the microcontr
 **[Back to top](#table-of-contents)**
 
 ---
+
+## Usage
+
+The application configures the **PTB16 (push button)** as an input. 
+- **When pressed**: the on-board RGB LED turns on.
+- **When released**: the on-board RGB LED turns off.
+
+The firmware demonstrates LED toggling functionality (observable in debugging mode, as no delay is applied).
+
+Low-level register operations are performed through the reusable driver:
+- The `GPIOD_PDOR` and `GPIOE_PDOR` registers are written using the `GPIO_registerWrite` function.  
+- The `GPIOE_PDOR` register is read using the `GPIO_registerRead` function to validate output state.
+
+**[Back to top](#table-of-contents)**
