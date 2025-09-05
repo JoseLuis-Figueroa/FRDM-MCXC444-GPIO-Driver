@@ -41,3 +41,38 @@ To contribute:
 We are committed to fostering an open, inclusive, and respectful environment.
 
 ---
+
+## Ways to Contribute
+
+You can contribute in many ways:
+
+- Improve or correct documentation.  
+- Fix bugs.  
+- Add new reusable drivers for another peripherals.  
+- Add test cases.  
+- Improve examples or demos (e.g. LED/button applications).
+
+---
+
+## Development Setup
+
+Make sure you have the following installed:
+
+- MCUXpresso IDE.  
+- GNU ARM Embedded Toolchain.  
+- A supported board like `FRDM-MCXC444`.  
+
+To build the project using the MCUXpresso toolbar:  
+Click **"Build"** on the bottom toolbar.  
+
+---
+
+## Coding Standards
+
+- Follow **MISRA-C** style guidelines wherever possible.  
+- Use consistent naming and file organization.  
+- Write **clean**, **modular**, and **reusable** code.  
+- Add comments and **document your code** using Doxygen.
+
+---
+
