@@ -22,7 +22,6 @@ The project follows **layered driver design principles** (driver ↔ HAL ↔ app
 - [Further Reading](#further-reading)
 - [License](#license)
 - [Authors](#authors)
-- [Acknowledgments](#acknowledgments)
 
 ---
 
@@ -162,5 +161,25 @@ Pull requests are welcome!
 Please read [CONTRIBUTING.md](/Documentation/CONTRIBUTING.md) for details on the development process, coding standards, and submission guidelines.
 
 **[Back to top](#table-of-contents)**
+
+---
+
+## Further Reading
+
+- [MCX C44X Documentation](https://www.nxp.com/products/MCX-C14x-24x-44x)  
+- [MISRA-C Guidelines](https://www.misra.org.uk/)
+- [Reusable Firmware Development](https://www.beningo.com/store/developing-reusable-firmware-a-practical-approach-to-apis-hals-and-drivers/) by Jacob Beningo  
+
+---
+
+## License
+
+This project is licensed under the MIT License – see the [LICENSE.md](LICENSE) file for details.
+
+---
+
+## Authors
+
+**[JoseLuis-Figueroa](https://github.com/JoseLuis-Figueroa)** – Developer and maintainer
 
 ---
