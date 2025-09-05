@@ -76,3 +76,46 @@ Click **"Build"** on the bottom toolbar.
 
 ---
 
+## Making a Pull Request
+
+1. Make sure your code builds and passes tests.  
+2. Run Doxygen to generate updated documentation (if applicable).  
+3. Push your branch:
+   ```bash
+   git push origin your-feature-branch
+   ```
+4. Open a pull request on GitHub.  
+5. Link the relevant issue if applicable.
+
+---
+
+## Commit Message Guidelines
+
+We follow [Conventional Commits](https://www.conventionalcommits.org/):
+
+- `feat:` New feature  
+- `fix:` Bug fix  
+- `docs:` Documentation only changes  
+- `style:` Formatting, missing semi colons, etc  
+- `refactor:` Refactoring code  
+- `test:` Adding missing tests  
+- `chore:` Maintenance  
+
+**Example:**
+
+```
+feat(spi): add master-slave data sync example
+```
+
+Name the branch according to the conventional commits is another way to do it.
+```
+feature/Update-Contributing
+```
+
+Write the commits without conventional.
+```
+Add Commit Message Guidelines section.
+```
+
+---
+
