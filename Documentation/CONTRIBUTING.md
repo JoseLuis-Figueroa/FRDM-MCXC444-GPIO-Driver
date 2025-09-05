@@ -114,8 +114,32 @@ feature/Update-Contributing
 
 Write the commits without conventional.
 ```
-Add Commit Message Guidelines section.
+Add Commit Message Guidelines section
 ```
 
 ---
 
+## Doxygen Documentation
+
+We use Doxygen for code documentation.
+
+To generate HTML docs:
+
+```bash
+doxygen Doxyfile
+```
+
+You can view the documentation in the `/Documentation/Doxygen` folder or visit:
+
+- [GPIO Driver Docs](https://raw.githack.com/JoseLuis-Figueroa/Reusable-Drivers/main//Doxygen/DIO/output_files/html/index.html)  
+
+---
+
+## Need Help?
+
+Open an [issue](https://github.com/JoseLuis-Figueroa/FRDM-MCXC444-GPIO-Driver/issues) or ask a question in the repository if you're stuck.  
+We're happy to help you get started!
+
+---
+
+Thank you for contributing to **FRDM-MCXC444 Drivers**!
