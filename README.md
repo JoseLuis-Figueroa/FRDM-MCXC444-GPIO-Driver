@@ -109,7 +109,7 @@ You can test on actual hardware by uploading the code using the **MCUXpresso IDE
 
 ### Installation
 
-No separate installation needed—firmware is flashed directly to the microcontroller using the MCU-Link OB based on the NXP CMSIS-DAP protocol.
+No separate installation needed-firmware is flashed directly to the microcontroller using the MCU-Link OB based on the NXP CMSIS-DAP protocol.
 
 **[Back to top](#table-of-contents)**
 
@@ -128,3 +128,39 @@ Low-level register operations are performed through the reusable driver:
 - The `GPIOE_PDOR` register is read using the `GPIO_registerRead` function to validate output state.
 
 **[Back to top](#table-of-contents)**
+
+---
+
+## Release Process
+
+New features and updates are pushed under versioned tags.
+
+### Versioning
+
+We use [Semantic Versioning](http://semver.org/).  
+Latest release: **v0.0**
+
+### Payload
+
+- `v0.0`: Initial release. GPIO reusable driver.  
+
+
+**[Back to top](#table-of-contents)**
+
+---
+
+## How to Get Help
+
+Create an [issue on GitHub](https://github.com/JoseLuis-Figueroa/FRDM-MCXC444-GPIO-Driver/issues) or contact the author through the GitHub profile.
+
+---
+
+## Contributing
+
+Pull requests are welcome!
+
+Please read [CONTRIBUTING.md](/Documentation/CONTRIBUTING.md) for details on the development process, coding standards, and submission guidelines.
+
+**[Back to top](#table-of-contents)**
+
+---
