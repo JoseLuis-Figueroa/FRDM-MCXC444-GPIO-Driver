@@ -52,7 +52,7 @@ This project serves as the foundation for **higher-level reusable drivers** and 
 - **Language**: Embedded C (bare-metal).
 - **Coding Standard**: MISRA-C.
 - **Tools:**
-  - **IDE/Editor**: VS Code.
+  - **IDE/Editor**: MCUXpresso.
   - **Toolchain**: ARM GNU Toolchain (`arm-none-eabi-gcc`).
   - **Build System**: Makefile (auto-generated in `/Debug`).
   - **Documentation**: Doxygen (planned).
@@ -62,6 +62,8 @@ This project serves as the foundation for **higher-level reusable drivers** and 
 ---
 
 ## Project Status
+![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
+
 **Current Version:** v0.0  
 **Tested On:** FRDM-MCXC444 board  
 
