@@ -128,6 +128,15 @@ Low-level register operations are performed through the reusable driver:
 - The `GPIOD_PDOR` and `GPIOE_PDOR` registers are written using the `GPIO_registerWrite` function.  
 - The `GPIOE_PDOR` register is read using the `GPIO_registerRead` function to validate output state.
 
+This implementation serves as a **test and validation of the GPIO driver**. A video demonstration provides a visual representation of the physical implementation of the GPIO driver.
+
+<p align="center">
+    <img src="https://github.com/JoseLuis-Figueroa/FRDM-MCXC444-GPIO-Driver/blob/main/Documentation/Doxygen/Images/NXP-MCUX.gif" alt="GPIO_Implementation">
+</p>
+
+<p align="center">Image 1. GPIO Hardware Test.</p>
+
+
 **[Back to top](#table-of-contents)**
 
 ---
